@@ -1,7 +1,7 @@
-# tests/apis/test_tweet_views.py
+# tests/apis/test_tweet_views.py taloha
 
 from flask_testing import TestCase
-from app import create_app, db  # N'oubliez pas d'importer db
+from app import create_app, db
 from app.models import Tweet
 
 class TestTweetViews(TestCase):
@@ -13,19 +13,16 @@ class TestTweetViews(TestCase):
 
     def setUp(self):
         db.create_all()
+        #_clear() method to public!
 
     def tearDown(self):
         db.session.remove()
         db.drop_all()
-
-    # [...]
-    # tests/apis/test_tweet_views.py
-    # [...]
-
+    
     def test_tweet_show(self):
         first_tweet = Tweet(text="First tweet")
         db.session.add(first_tweet)
-        db.session.commit()
+    db.session.commit()
         response = self.client.get("/tweets/1")
         response_tweet = response.json
         print(response_tweet)
