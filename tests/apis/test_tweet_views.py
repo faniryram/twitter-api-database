@@ -22,7 +22,7 @@ class TestTweetViews(TestCase):
     def test_tweet_show(self):
         first_tweet = Tweet(text="First tweet")
         db.session.add(first_tweet)
-    db.session.commit()
+        db.session.commit()
         response = self.client.get("/tweets/1")
         response_tweet = response.json
         print(response_tweet)
